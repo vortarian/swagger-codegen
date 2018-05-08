@@ -102,9 +102,16 @@ void {{classname}}{{vendorExtensions.x-codegen-resourceName}}Resource::{{httpMet
 			int status_code = 200;
 			
 			/**
-			 * Process the received information here
+			 * Process the received information here using virtual method
 			 */
-			
+			status_code = this->{{httpMethod}}_method_handlerImpl(
+				session{{#hasBodyParam}},
+                body{{/hasBodyParam}}{{#hasPathParams}}{{#pathParams}}{{#isPrimitiveType}},
+                {{paramName}}{{/isPrimitiveType}}{{/pathParams}}{{/hasPathParams}}{{#hasQueryParams}}{{#queryParams}}{{#isPrimitiveType}},
+                {{paramName}}{{/isPrimitiveType}}{{/queryParams}}{{/hasQueryParams}}{{#hasHeaderParams}}{{#headerParams}}{{#isPrimitiveType}},
+                {{paramName}}{{/isPrimitiveType}}{{/headerParams}}{{/hasHeaderParams}}
+			);
+
 			{{#responses}}
 			if (status_code == {{code}}) {
 				{{#headers}}
@@ -167,9 +174,16 @@ void {{classname}}{{vendorExtensions.x-codegen-resourceName}}Resource::{{httpMet
 			int status_code = 200;
 			
 			/**
-			 * Process the received information here
+			 * Process the received information here using virtual method
 			 */
-			
+            status_code = this->{{httpMethod}}_method_handlerImpl(
+                session{{#hasBodyParam}},
+                body{{/hasBodyParam}}{{#hasPathParams}}{{#pathParams}}{{#isPrimitiveType}},
+                {{paramName}}{{/isPrimitiveType}}{{/pathParams}}{{/hasPathParams}}{{#hasQueryParams}}{{#queryParams}}{{#isPrimitiveType}},
+                {{paramName}}{{/isPrimitiveType}}{{/queryParams}}{{/hasQueryParams}}{{#hasHeaderParams}}{{#headerParams}}{{#isPrimitiveType}},
+                {{paramName}}{{/isPrimitiveType}}{{/headerParams}}{{/hasHeaderParams}}
+            );
+
 			{{#responses}}
 			if (status_code == {{code}}) {
 				{{#baseType}}

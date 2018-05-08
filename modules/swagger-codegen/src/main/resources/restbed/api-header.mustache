@@ -46,8 +46,24 @@ public:
 	{{classname}}{{vendorExtensions.x-codegen-resourceName}}Resource();
     virtual ~{{classname}}{{vendorExtensions.x-codegen-resourceName}}Resource();
     void {{httpMethod}}_method_handler(const std::shared_ptr<restbed::Session> session);
+    virtual int {{httpMethod}}_method_handlerImpl(
+        const std::shared_ptr<restbed::Session> session{{#hasBodyParam}},
+        const std::string& body{{/hasBodyParam}}{{#hasPathParams}}{{#pathParams}}{{#isPrimitiveType}},
+        const {{dataType}}& {{paramName}} = {{#isString}}""{{/isString}}{{#isInteger}}0{{/isInteger}}{{#isLong}}0L{{/isLong}}{{#isFloat}}0.0f{{/isFloat}}{{#isDouble}}0.0{{/isDouble}}{{/isPrimitiveType}}{{/pathParams}}{{/hasPathParams}}{{#hasQueryParams}}{{#queryParams}}{{#isPrimitiveType}},
+        const {{dataType}}& {{paramName}} = {{#isString}}""{{/isString}}{{#isInteger}}0{{/isInteger}}{{#isLong}}0L{{/isLong}}{{#isFloat}}0.0f{{/isFloat}}{{#isDouble}}0.0{{/isDouble}}{{/isPrimitiveType}}{{/queryParams}}{{/hasQueryParams}}{{#hasHeaderParams}}{{#headerParams}}{{#isPrimitiveType}},
+        const {{dataType}}& {{paramName}} = {{#isString}}""{{/isString}}{{#isInteger}}0{{/isInteger}}{{#isLong}}0L{{/isLong}}{{#isFloat}}0.0f{{/isFloat}}{{#isDouble}}0.0{{/isDouble}}{{/isPrimitiveType}}{{/headerParams}}{{/hasHeaderParams}}
+    ) { /* Default to returning 501 - Not Implemented */ return 501; };
     {{#vendorExtensions.x-codegen-otherMethods}}
     void {{httpMethod}}_method_handler(const std::shared_ptr<restbed::Session> session);
+    {{/vendorExtensions.x-codegen-otherMethods}}
+    {{#vendorExtensions.x-codegen-otherMethods}}
+    virtual int {{httpMethod}}_method_handlerImpl(
+        const std::shared_ptr<restbed::Session> session{{#hasBodyParam}},
+        const std::string& body{{/hasBodyParam}}{{#hasPathParams}}{{#pathParams}}{{#isPrimitiveType}},
+        const {{dataType}}& {{paramName}} = {{#isString}}""{{/isString}}{{#isInteger}}0{{/isInteger}}{{#isLong}}0L{{/isLong}}{{#isFloat}}0.0f{{/isFloat}}{{#isDouble}}0.0{{/isDouble}}{{/isPrimitiveType}}{{/pathParams}}{{/hasPathParams}}{{#hasQueryParams}}{{#queryParams}}{{#isPrimitiveType}},
+        const {{dataType}}& {{paramName}} = {{#isString}}""{{/isString}}{{#isInteger}}0{{/isInteger}}{{#isLong}}0L{{/isLong}}{{#isFloat}}0.0f{{/isFloat}}{{#isDouble}}0.0{{/isDouble}}{{/isPrimitiveType}}{{/queryParams}}{{/hasQueryParams}}{{#hasHeaderParams}}{{#headerParams}}{{#isPrimitiveType}},
+        const {{dataType}}& {{paramName}} = {{#isString}}""{{/isString}}{{#isInteger}}0{{/isInteger}}{{#isLong}}0L{{/isLong}}{{#isFloat}}0.0f{{/isFloat}}{{#isDouble}}0.0{{/isDouble}}{{/isPrimitiveType}}{{/headerParams}}{{/hasHeaderParams}}
+    ) { /* Default to returning 501 - Not Implemented */ return 501; };
     {{/vendorExtensions.x-codegen-otherMethods}}
 };
 
